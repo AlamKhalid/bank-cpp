@@ -96,7 +96,9 @@ struct user {
 
 	void withdraw() {
 		double amount;
-		cout << "\nYour balance is $" << balance<<endl;
+		bool enoughBal = true;
+		while (1) {
+		cout << "\nYour balance is $" << balance << endl;
 		cout << "Please enter amount you want to withdraw\n1->$5\n2->$10\n3->$20\n4->Other Amount\n5->To Enter Previous Menu\n\n>";
 		cin >> menuInput;
 		switch (menuInput) {
@@ -105,19 +107,30 @@ struct user {
 				balance -= 5;
 				cout << "\nYou have withdrawn $5: Your remaining balance is $" << balance;
 			}
-			else cout << "\nSorry You Don't Have Enough Balance\n";
+			else {
+				cout << "\nSorry You Don't Have Enough Balance\n";
+				enoughBal = false;
+			}
 			break;
 		case '2':
 			if (balance >= 10) {
 				balance -= 10;
 				cout << "\nYou have withdrawn $10: Your remaining balance is $" << balance;
-			} else cout << "\nSorry You Don't Have Enough Balance\n";
+			}
+			else {
+				cout << "\nSorry You Don't Have Enough Balance\n";
+				enoughBal = false;
+			}
 			break;
 		case '3':
 			if (balance >= 20) {
 				balance -= 20;
 				cout << "\nYou have withdrawn $20: Your remaining balance is $" << balance;
-			} else cout << "\nSorry You Don't Have Enough Balance\n";
+			}
+			else {
+				cout << "\nSorry You Don't Have Enough Balance\n";
+				enoughBal = false;
+			}
 			break;
 		case '4':
 			cout << "\nEnter amount you want to withdraw: $";
@@ -126,10 +139,16 @@ struct user {
 				balance -= amount;
 				cout << "\nYou have withdrawn $" << amount << ": Your remaining balance is $" << balance;
 			}
-			else cout << "\nSorry You Don't Have Enough Balance\n";
+			else {
+				cout << "\nSorry You Don't Have Enough Balance\n";
+				enoughBal = false;
+			}
 			break;
 		case '5':
 			return;
+		}
+		if (enoughBal) break;
+		enoughBal = true;
 		}
 	}
 
