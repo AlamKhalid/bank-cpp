@@ -110,13 +110,13 @@ struct user {
 		case '2':
 			if (balance >= 10) {
 				balance -= 10;
-				cout << "\nYou have withdrawn $5: Your remaining balance is $" << balance;
+				cout << "\nYou have withdrawn $10: Your remaining balance is $" << balance;
 			} else cout << "\nSorry You Don't Have Enough Balance\n";
 			break;
 		case '3':
 			if (balance >= 20) {
 				balance -= 20;
-				cout << "\nYou have withdrawn $5: Your remaining balance is $" << balance;
+				cout << "\nYou have withdrawn $20: Your remaining balance is $" << balance;
 			} else cout << "\nSorry You Don't Have Enough Balance\n";
 			break;
 		case '4':
