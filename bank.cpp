@@ -238,19 +238,29 @@ struct admin {
 	}
 
 	void customerWithHighestBalance() {
-		user u = users[0];
-		for (int i = 1; i < users.size(); i++) {
-			if (users[i].balance > u.balance) u = users[i];
+		if (users.size() > 0) {
+			user u = users[0];
+			for (int i = 1; i < users.size(); i++) {
+				if (users[i].balance > u.balance) u = users[i];
+			}
+			cout << "Customer with highest balance is " << u.username << " with balance of $" << u.balance << endl;
 		}
-		cout << "Customer with highest balance is " << u.username << " with balance of $" << u.balance<<endl;
+		else {
+			cout << "No customers found...\n\n";
+		}
 	}
 
 	void customerWithLowestBalance() {
-		user u = users[0];
-		for (int i = 1; i < users.size(); i++) {
-			if (users[i].balance < u.balance) u = users[i];
+		if (users.size() > 0) {
+			user u = users[0];
+			for (int i = 1; i < users.size(); i++) {
+				if (users[i].balance < u.balance) u = users[i];
+			}
+			cout << "Customer with lowest balance is " << u.username << " with balance of $" << u.balance << endl;
 		}
-		cout << "Customer with lowest balance is " << u.username << " with balance of $" << u.balance << endl;
+		else {
+			cout << "No customers found...\n\n";
+		}
 	}
 
 	void searchCustomer() {
@@ -294,46 +304,56 @@ struct admin {
 	}
 
 	void customerDonatedHighestForDam() {
-		user u = users[0];
-		for (int i = 1; i < users.size(); i++) {
-			if (users[i].amountDonatedForDam > u.amountDonatedForDam) u = users[i];
+		if (users.size() > 0) {
+			user u = users[0];
+			for (int i = 1; i < users.size(); i++) {
+				if (users[i].amountDonatedForDam > u.amountDonatedForDam) u = users[i];
+			}
+			cout << "Customer with highest donation for dam is done by " << u.username << " with donation amount of $" << u.amountDonatedForDam << endl;
 		}
-		cout << "Customer with highest donation for dam is done by " << u.username << " with donation amount of $" << u.amountDonatedForDam << endl;
+		else {
+			cout << "No customers found...\n\n";
+		}
 	}
 
 	void youngestCustomer() {
-		user uMale, uFemale;
-		int maleIndex = 0, femaleIndex = 0;
-		for (int i = 0; i < users.size(); i++) {
-			if (users[i].gender == "male") {
-				uMale = users[i];
-				maleIndex = i;
-				break;
-			}
-		}
-		for (int i = 0; i < users.size(); i++) {
-			if (users[i].gender == "female") {
-				uFemale = users[i];
-				femaleIndex = i;
-				break;
-			}
-		}
-		// for lowest aged male
-		for (int i = maleIndex + 1; i < users.size(); i++) {
-			if (users[i].gender == "male") {
-				if (users[i].age < uMale.age)
+		if (users.size() > 0) {
+			user uMale, uFemale;
+			int maleIndex = 0, femaleIndex = 0;
+			for (int i = 0; i < users.size(); i++) {
+				if (users[i].gender == "male") {
 					uMale = users[i];
+					maleIndex = i;
+					break;
+				}
 			}
-		}
-		// for lowest aged female
-		for (int i = femaleIndex + 1; i < users.size(); i++) {
-			if (users[i].gender == "female") {
-				if (users[i].age < uFemale.age)
+			for (int i = 0; i < users.size(); i++) {
+				if (users[i].gender == "female") {
 					uFemale = users[i];
+					femaleIndex = i;
+					break;
+				}
 			}
+			// for lowest aged male
+			for (int i = maleIndex + 1; i < users.size(); i++) {
+				if (users[i].gender == "male") {
+					if (users[i].age < uMale.age)
+						uMale = users[i];
+				}
+			}
+			// for lowest aged female
+			for (int i = femaleIndex + 1; i < users.size(); i++) {
+				if (users[i].gender == "female") {
+					if (users[i].age < uFemale.age)
+						uFemale = users[i];
+				}
+			}
+			cout << "\nYoungest Male is " << uMale.username << " with age " << uMale.age << endl;
+			cout << "\nYoungest Female is " << uFemale.username << " with age " << uFemale.age << endl;
 		}
-		cout << "\nYoungest Male is " << uMale.username << " with age " << uMale.age << endl;
-		cout << "\nYoungest Female is " << uFemale.username << " with age " << uFemale.age << endl;
+		else {
+			cout << "No customers found...\n\n";
+		}
 	}
 
 	void totalDonationAmount() {
