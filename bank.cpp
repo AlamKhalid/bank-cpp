@@ -57,12 +57,12 @@ struct user {
 			}
 			else break;
 		}
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		do {
 			cout << "Please enter your password: ";
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			getline(cin, password);
 			if (password.length() < 8) {
-				cout << "Password should consist of at least 8 alphanumeric characters";
+				cout << "Password should consist of at least 8 alphanumeric characters\n";
 			}
 			else break;
 		} while (1);
@@ -105,19 +105,19 @@ struct user {
 				balance -= 5;
 				cout << "\nYou have withdrawn $5: Your remaining balance is $" << balance;
 			}
-			else cout << "\nSorry You Don't Have Enough Balance";
+			else cout << "\nSorry You Don't Have Enough Balance\n";
 			break;
 		case '2':
 			if (balance >= 10) {
 				balance -= 10;
 				cout << "\nYou have withdrawn $5: Your remaining balance is $" << balance;
-			} else cout << "\nSorry You Don't Have Enough Balance";
+			} else cout << "\nSorry You Don't Have Enough Balance\n";
 			break;
 		case '3':
 			if (balance >= 20) {
 				balance -= 20;
 				cout << "\nYou have withdrawn $5: Your remaining balance is $" << balance;
-			} else cout << "\nSorry You Don't Have Enough Balance";
+			} else cout << "\nSorry You Don't Have Enough Balance\n";
 			break;
 		case '4':
 			cout << "\nEnter amount you want to withdraw: $";
@@ -126,7 +126,7 @@ struct user {
 				balance -= amount;
 				cout << "\nYou have withdrawn $" << amount << ": Your remaining balance is $" << balance;
 			}
-			else cout << "\nSorry You Don't Have Enough Balance";
+			else cout << "\nSorry You Don't Have Enough Balance\n";
 			break;
 		case '5':
 			return;
@@ -537,21 +537,26 @@ void login() {
 		switch (menuInput) {
 			case '1':
 				activeUser.deposit();
+				system("pause");
 				break;
 			case '2':
 				activeUser.withdraw();
+				system("pause");
 				break;
 			case '3':
 				activeUser.checkBalance();
+				system("pause");
 				break;
 			case '4':
 				activeUser.bill();
+				system("pause");
 				break;
 			case '5':
 				activeUser.donate();
+				system("pause");
 				break;
 			case '6':
-				cout << "\nThanks for Using Our Services!";
+				cout << "\nThanks for Using Our Services!\n\n";
 				breakFromLoop = true;
 				break;
 		}
