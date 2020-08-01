@@ -319,7 +319,7 @@ struct admin {
 	void youngestCustomer() {
 		if (users.size() > 0) {
 			user uMale, uFemale;
-			int maleIndex = 0, femaleIndex = 0;
+			int maleIndex = -1, femaleIndex = -1;
 			for (int i = 0; i < users.size(); i++) {
 				if (users[i].gender == "male") {
 					uMale = users[i];
@@ -348,8 +348,9 @@ struct admin {
 						uFemale = users[i];
 				}
 			}
-			cout << "\nYoungest Male is " << uMale.username << " with age " << uMale.age << endl;
-			cout << "\nYoungest Female is " << uFemale.username << " with age " << uFemale.age << endl;
+			if (maleIndex == -1)
+				cout << "\nYoungest Male is " << uMale.username << " with age " << uMale.age << endl; else cout << "No male user found\n\n";
+			if(femaleIndex == -1)cout << "\nYoungest Female is " << uFemale.username << " with age " << uFemale.age << endl; else cout << "No female userfound\n\n";
 		}
 		else {
 			cout << "No customers found...\n\n";
@@ -388,6 +389,9 @@ struct admin {
 			if (isPalindrome) {
 				cout << "\nCustomer having palindrome user id is " << name<<endl;
 				return;
+			}
+			else {
+				cout << "No customer found have palindrome user id\n\n";
 			}
 
 		}
